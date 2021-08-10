@@ -1,21 +1,5 @@
---[[
-LUA MODULE
-  bit.numberlua - Bitwise operations implemented in pure Lua as numbers,
-    with Lua 5.2 'bit32' and (LuaJIT) LuaBitOp 'bit' compatibility interfaces.
-SYNOPSIS
-  local bit = require 'bit.numberlua'
-  print(bit.band(0xff00ff00, 0x00ff00ff)) --> 0xffffffff
-  
-  -- Interface providing strong Lua 5.2 'bit32' compatibility
-  local bit32 = require 'bit.numberlua'.bit32
-  assert(bit32.band(-1) == 0xffffffff)
-  
-  -- Interface providing strong (LuaJIT) LuaBitOp 'bit' compatibility
-  local bit = require 'bit.numberlua'.bit
-  assert(bit.tobit(0xffffffff) == -1)
-  
+--[[  
 DESCRIPTION
-  
   This library implements bitwise operations entirely in Lua.
   This module is typically intended if for some reasons you don't want
   to or cannot  install a popular C based bit library like BitOp 'bit' [1]
@@ -50,64 +34,58 @@ STATUS
   http://www.lua.org/tests/5.2/ .  The BIT.bit library passes the LuaBitOp
   test suite (bittest.lua).  However, these have not been tested on
   platforms with Lua compiled with 32-bit integer numbers.
+
 API
-  BIT.tobit(x) --> z
-  
+  BIT.tobit(x) --> z  
     Similar to function in BitOp.
     
-  BIT.tohex(x, n)
-  
+  BIT.tohex(x, n)  
     Similar to function in BitOp.
   
-  BIT.band(x, y) --> z
-  
+  BIT.band(x, y) --> z  
     Similar to function in Lua 5.2 and BitOp but requires two arguments.
   
-  BIT.bor(x, y) --> z
-  
+  BIT.bor(x, y) --> z  
     Similar to function in Lua 5.2 and BitOp but requires two arguments.
-  BIT.bxor(x, y) --> z
-  
+
+  BIT.bxor(x, y) --> z  
     Similar to function in Lua 5.2 and BitOp but requires two arguments.
   
-  BIT.bnot(x) --> z
-  
+  BIT.bnot(x) --> z  
     Similar to function in Lua 5.2 and BitOp.
-  BIT.lshift(x, disp) --> z
-  
+
+  BIT.lshift(x, disp) --> z  
     Similar to function in Lua 5.2 (warning: BitOp uses unsigned lower 5 bits of shift),
   
-  BIT.rshift(x, disp) --> z
-  
+  BIT.rshift(x, disp) --> z  
     Similar to function in Lua 5.2 (warning: BitOp uses unsigned lower 5 bits of shift),
-  BIT.extract(x, field [, width]) --> z
-  
+
+  BIT.extract(x, field [, width]) --> z  
     Similar to function in Lua 5.2.
   
-  BIT.replace(x, v, field, width) --> z
-  
+  BIT.replace(x, v, field, width) --> z  
     Similar to function in Lua 5.2.
   
-  BIT.bswap(x) --> z
-  
+  BIT.bswap(x) --> z  
     Similar to function in Lua 5.2.
+
   BIT.rrotate(x, disp) --> z
-  BIT.ror(x, disp) --> z
-  
+
+  BIT.ror(x, disp) --> z  
     Similar to function in Lua 5.2 and BitOp.
+
   BIT.lrotate(x, disp) --> z
+
   BIT.rol(x, disp) --> z
     Similar to function in Lua 5.2 and BitOp.
   
-  BIT.arshift
-  
+  BIT.arshift  
     Similar to function in Lua 5.2 and BitOp.
     
-  BIT.btest
-  
+  BIT.btest  
     Similar to function in Lua 5.2 with requires two arguments.
-  BIT.bit32
-  
+
+  BIT.bit32  
     This table contains functions that aim to provide 100% compatibility
     with the Lua 5.2 "bit32" library.
     
@@ -123,8 +101,8 @@ API
     bit32.lshift (x, disp) --> z
     bit32.rrotate (x, disp) --> z
     bit32.rshift (x, disp) --> z
-  BIT.bit
-  
+
+  BIT.bit  
     This table contains functions that aim to provide 100% compatibility
     with the LuaBitOp "bit" library (from LuaJIT).
     
@@ -141,20 +119,6 @@ API
     bit.ror(x, n) --> y
     bit.bswap(x) --> y
     
-DEPENDENCIES
-  None (other than Lua 5.1 or 5.2).
-    
-DOWNLOAD/INSTALLATION
-  If using LuaRocks:
-    luarocks install lua-bit-numberlua
-  Otherwise, download <https://github.com/davidm/lua-bit-numberlua/zipball/master>.
-  Alternately, if using git:
-    git clone git://github.com/davidm/lua-bit-numberlua.git
-    cd lua-bit-numberlua
-  Optionally unpack:
-    ./util.mk
-  or unpack and install in LuaRocks:
-    ./util.mk install 
 REFERENCES
   [1] http://lua-users.org/wiki/FloatingPoint
   [2] http://www.lua.org/manual/5.2/
