@@ -36,7 +36,7 @@ local generatePermutation = function(seed)
 
   local permutation = {0}
   for i=1,255 do
-    table.insert(permutation,math.random(1,#permutation),i)
+    table.insert(permutation,math.random(1,#permutation+1),i)
   end
 
   local p = {}
